@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBusLabel_busId}" for="busId" />
+                    <h:inputText id="busId" value="#{busController.selected.busId}" title="#{bundle.EditBusTitle_busId}" required="true" requiredMessage="#{bundle.EditBusRequiredMessage_busId}"/>
+                    <h:outputLabel value="#{bundle.EditBusLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{busController.selected.location}" title="#{bundle.EditBusTitle_location}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_driverId}" for="driverId" />
+                    <h:inputText id="driverId" value="#{busController.selected.driverId}" title="#{bundle.EditBusTitle_driverId}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_operationCode}" for="operationCode" />
+                    <h:inputText id="operationCode" value="#{busController.selected.operationCode}" title="#{bundle.EditBusTitle_operationCode}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_message}" for="message" />
+                    <h:inputText id="message" value="#{busController.selected.message}" title="#{bundle.EditBusTitle_message}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_routeStatus}" for="routeStatus" />
+                    <h:inputText id="routeStatus" value="#{busController.selected.routeStatus}" title="#{bundle.EditBusTitle_routeStatus}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_passengerCount}" for="passengerCount" />
+                    <h:inputText id="passengerCount" value="#{busController.selected.passengerCount}" title="#{bundle.EditBusTitle_passengerCount}" />
+                    <h:outputLabel value="#{bundle.EditBusLabel_timestamp}" for="timestamp" />
+                    <h:inputText id="timestamp" value="#{busController.selected.timestamp}" title="#{bundle.EditBusTitle_timestamp}" />
+                </h:panelGrid>
+                <h:commandLink action="#{busController.update}" value="#{bundle.EditBusSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBusViewLink}"/>
+                <br />
+                <h:commandLink action="#{busController.prepareList}" value="#{bundle.EditBusShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBusIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
